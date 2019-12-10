@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main()
+{
+    vector<int> array;
+    vector<int> NUM;
+    auto* max = new int;
+    bool is_all_iterative = true;
+    int a;
+    for (int i = 0; i < 7; i++)
+    {
+        cin >> a;
+        array.push_back(a);
+        if (i != 0 && is_all_iterative == true && array[i - 1] != array[i])
+            is_all_iterative = false;
+        if (array[i] > *max || i == 0)
+        {
+            *max = array[i];
+            NUM.erase(NUM.begin(), NUM.end());
+        }
+        if (array[i] == *max)
+        {
+            NUM.push_back(i);
+        }
+    }
+    for (int i = 0; i < NUM.size(); i++)
+    {
+        array.erase(array.begin() + NUM[i] - i);
+        cout << NUM[i];
+    }
+    cout << endl;
+    for (int i = 0; i < array.size(); i++)
+    {
+        cout << array[i];
+    }
+
+}
